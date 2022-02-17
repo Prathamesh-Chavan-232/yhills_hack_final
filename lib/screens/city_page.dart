@@ -59,8 +59,7 @@ class _CityPageState extends State<CityPage> {
           child: SizedBox(
             width: 60,
             child: FloatingActionButton(onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => CityList(cityName: cityData.cityName)));
+              Navigator.pushNamed(context, '/home');
             }),
           ),
           alignment: const Alignment(0.97, 0.93),

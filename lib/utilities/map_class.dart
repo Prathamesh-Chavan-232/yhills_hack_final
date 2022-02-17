@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
 
 late MapShapeSource _dataSource;
-class Myapp extends StatefulWidget {
-  const Myapp({Key? key}) : super(key: key);
+class MapClass extends StatefulWidget {
+  const MapClass({Key? key}) : super(key: key);
 
   @override
-  _MyappState createState() => _MyappState();
+
+  _MapClassState createState() => _MapClassState();
 }
 
-class _MyappState extends State<Myapp> {
+class _MapClassState extends State<MapClass> {
   @override
+
   void initState() {
     _dataSource = const MapShapeSource.asset(
       'assets/india-states.json',
@@ -19,7 +21,6 @@ class _MyappState extends State<Myapp> {
     super.initState();
   }
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
@@ -33,3 +34,4 @@ class _MyappState extends State<Myapp> {
     );
   }
 }
+
