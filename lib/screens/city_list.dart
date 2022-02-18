@@ -1,4 +1,5 @@
 import 'package:crime_stats_app/utilities/classes.dart';
+import 'package:crime_stats_app/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
 class CityList extends StatelessWidget {
@@ -9,33 +10,45 @@ class CityList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                IconButton(
-                    onPressed: () => Navigator.pop(context, cityName),
-                    icon: const Icon(Icons.arrow_back)),
-                const Text(
-                  "   Choose a City",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-            Expanded(
-                child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              child: ListView.separated(
-                itemCount: cities.length,
-                itemBuilder: (context, i) => _buildTile(context, i),
-                separatorBuilder: (context, i) => const SizedBox(height: 10),
-              ),
-            )),
-          ],
+        child: Drawer(
+          child: Material(
+            color: slideMenuclr,
+            borderRadius: BorderRadius.circular(20),
+            child: _buildDrawerContent(context),
+          ),
         ),
       ),
+    );
+  }
+
+  Widget _buildDrawerContent(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 20.0),
+          child: Row(
+            children: [
+              IconButton(
+                  onPressed: () => Navigator.pop(context, cityName),
+                  icon: const Icon(Icons.arrow_back)),
+              const Text(
+                "   Choose a City",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 10),
+        Expanded(child: _buildListView(context)),
+      ],
+    );
+  }
+
+  Widget _buildListView(BuildContext context) {
+    return ListView.builder(
+      itemCount: cities.length,
+      itemBuilder: (context, i) => _buildTile(context, i),
     );
   }
 
@@ -48,18 +61,11 @@ class CityList extends StatelessWidget {
       child: ListTile(
         title: Container(
           padding: const EdgeInsets.symmetric(
-              horizontal: 10.0, vertical: 12), // padding inside city list tile
+              horizontal: 15.0, vertical: 15), // padding inside city list tile
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50), color: Colors.grey[350]),
-          child: Row(
-            children: [
-              const CircleAvatar(
-                backgroundColor: Colors.blue,
-              ),
-              const SizedBox(width: 25),
+              borderRadius: BorderRadius.circular(50)),
+          child:
               Text(cities[i])
-            ],
-          ),
         ),
       ),
     );

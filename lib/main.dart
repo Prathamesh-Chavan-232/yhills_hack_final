@@ -6,6 +6,7 @@ import 'package:crime_stats_app/utilities/map_class.dart';
 import 'package:crime_stats_app/screens/by_crime_page.dart';
 import 'package:crime_stats_app/screens/city_list.dart';
 import 'package:crime_stats_app/screens/city_page.dart';
+import 'package:crime_stats_app/screens/test.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 
     return MaterialApp(
-      initialRoute: '/map_class',
+      initialRoute: '/test',
       routes: {
         '/home': (context) => const HomePage(),
         '/by_crime': (context) => const ByCrime(),
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/city_page': (context) => const CityPage(),
         '/map_class': (context) => const MapClass(),
         '/load': (context) => const Loading(),
+        '/test': (context) => const Testing(),
       },
       debugShowCheckedModeBanner: false,
     );
