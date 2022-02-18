@@ -4,7 +4,7 @@ import 'package:crime_stats_app/utilities/classes.dart';
 import 'package:crime_stats_app/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
-CityData cityData = CityData(cityName: cities[0]);
+
 
 class CityPage extends StatefulWidget {
   const CityPage({Key? key}) : super(key: key);
@@ -14,9 +14,19 @@ class CityPage extends StatefulWidget {
 }
 
 class _CityPageState extends State<CityPage> {
+
+
+  CityData cityData = CityData(cityName: cities[0]);
+  @override
+  void initState() {
+    cityData = CityData(cityName: cities[0]);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: kBgClr,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,10 +129,12 @@ Widget _buildContainer(BuildContext context, int i) {
         margin: const EdgeInsets.all(6),
         width: 260,
         decoration: BoxDecoration(
-          color: Colors.grey[350],
-          borderRadius: BorderRadius.circular(20),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
         ),
-        child: Image.asset(crimeImg[i],fit: BoxFit.fitHeight),
+        child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(crimeImg[i],fit: BoxFit.fitHeight)),
       ),
     ),
   );

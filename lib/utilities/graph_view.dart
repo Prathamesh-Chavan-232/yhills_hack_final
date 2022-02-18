@@ -13,9 +13,13 @@ class GraphView extends StatefulWidget {
 class _GraphViewState extends State<GraphView> {
 
   late List<Data> _chartData;
+  late List<ExpenseData> _chartData1;
+  late TooltipBehavior _tooltipBehavior;
   @override
   void initState() {
     _chartData = getChartData();
+    _chartData1 = getChartData1();
+    _tooltipBehavior = TooltipBehavior(enable: true);
     super.initState();
   }
   @override
@@ -36,8 +40,8 @@ class _GraphViewState extends State<GraphView> {
         margin: const EdgeInsets.all(5),
         height: 270,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12), color: Colors.grey[350]),
-        child: _buildPieChart(),
+            borderRadius: BorderRadius.circular(12), color: Colors.white),
+        child: chkGraph(i),
       ),
     );
   }
@@ -53,12 +57,68 @@ class _GraphViewState extends State<GraphView> {
             dataSource: _chartData,
             xValueMapper: (data, context) => data.name,
             yValueMapper: (data, context) => data.value,
-            dataLabelSettings: const DataLabelSettings(isVisible: true))
+            dataLabelSettings: const DataLabelSettings(isVisible: false))
       ],
     );
   }
 
+  Widget _buildBarGraph()
+  {
+    return SfCartesianChart(
+      title: ChartTitle(
+          text: 'Sample Cartesian graph'),
+      legend: Legend(isVisible: true),
+      tooltipBehavior: _tooltipBehavior,
+      series: <ChartSeries>[
+        StackedArea100Series<ExpenseData, String>(
+            dataSource: _chartData1,
+
+            xValueMapper: (ExpenseData exp, _) => exp.expenseCategory,
+            yValueMapper: (ExpenseData exp, _) => exp.father,
+            name: 'Father',
+            markerSettings: const MarkerSettings(
+              isVisible: true,
+            )),
+        StackedArea100Series<ExpenseData, String>(
+            dataSource: _chartData1,
+            xValueMapper: (ExpenseData exp, _) => exp.expenseCategory,
+            yValueMapper: (ExpenseData exp, _) => exp.mother,
+            name: 'Mother',
+            markerSettings: MarkerSettings(
+              isVisible: true,
+            )),
+        StackedArea100Series<ExpenseData, String>(
+            dataSource: _chartData1,
+            xValueMapper: (ExpenseData exp, _) => exp.expenseCategory,
+            yValueMapper: (ExpenseData exp, _) => exp.son,
+            name: 'Son',
+            markerSettings: MarkerSettings(
+              isVisible: true,
+            )),
+        StackedArea100Series<ExpenseData, String>(
+            dataSource: _chartData1,
+            xValueMapper: (ExpenseData exp, _) => exp.expenseCategory,
+            yValueMapper: (ExpenseData exp, _) => exp.daughter,
+            name: 'Daughter',
+            markerSettings: MarkerSettings(
+              isVisible: true,
+            )),
+      ],
+      primaryXAxis: CategoryAxis(),
+    );
+  }
+
+  Widget chkGraph(int i)
+  {
+    if (i == 2) {
+      return _buildBarGraph();
+    }
+    else {
+      return  _buildPieChart();
+    }
+  }
 }
+
 
 
 

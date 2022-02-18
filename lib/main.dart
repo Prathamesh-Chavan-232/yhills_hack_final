@@ -6,6 +6,8 @@ import 'package:crime_stats_app/utilities/map_class.dart';
 import 'package:crime_stats_app/screens/by_crime_page.dart';
 import 'package:crime_stats_app/screens/city_list.dart';
 import 'package:crime_stats_app/screens/city_page.dart';
+import 'package:crime_stats_app/screens/news.dart';
+import 'package:crime_stats_app/utilities/ripple_animation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,14 +22,17 @@ class MyApp extends StatelessWidget {
         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 
     return MaterialApp(
+      title: "crimex",
       initialRoute: '/home',
       routes: {
         '/home': (context) => const HomePage(),
         '/by_crime': (context) => const ByCrime(),
         '/city_list': (context) => CityList(),
         '/city_page': (context) => const CityPage(),
+        '/ripple_city_page': (context) => RippleCityPage(),
         '/map_class': (context) => const MapClass(),
         '/load': (context) => const Loading(),
+        '/news': (context) => const News(),
       },
       debugShowCheckedModeBanner: false,
     );

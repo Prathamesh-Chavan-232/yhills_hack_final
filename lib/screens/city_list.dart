@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 class CityList extends StatelessWidget {
   String? cityName;
   CityList({this.cityName, Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kBgClr,
       body: SafeArea(
         child: Drawer(
           child: Material(
@@ -30,7 +30,7 @@ class CityList extends StatelessWidget {
           child: Row(
             children: [
               IconButton(
-                  onPressed: () => Navigator.pop(context, cityName),
+                  onPressed: () => Navigator.pop(context,cityName),
                   icon: const Icon(Icons.arrow_back)),
               const Text(
                 "   Choose a City",
@@ -53,20 +53,18 @@ class CityList extends StatelessWidget {
   }
 
   Widget _buildTile(BuildContext context, int i) {
-    return GestureDetector(
-      onTap: () {
+    return ListTile(
+      onTap: (){
         cityName = cities[i];
         Navigator.pop(context, cityName);
       },
-      child: ListTile(
-        title: Container(
-          padding: const EdgeInsets.symmetric(
-              horizontal: 15.0, vertical: 15), // padding inside city list tile
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50)),
-          child:
-              Text(cities[i])
-        ),
+      title: Container(
+        padding: const EdgeInsets.symmetric(
+            horizontal: 15.0, vertical: 15), // padding inside city list tile
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50)),
+        child:
+            Text(cities[i])
       ),
     );
   }

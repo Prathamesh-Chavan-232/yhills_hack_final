@@ -14,16 +14,18 @@ class ByCrime extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              children:  [
-                IconButton(onPressed: () => Navigator.pop(context), icon: const Icon(Icons.arrow_back)),
-                Text(
+              children: [
+                IconButton(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(Icons.arrow_back)),
+                const Text(
                   "   Graphs",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                 ),
               ],
             ),
-            SizedBox(height: 30),
-            Expanded(
+            const SizedBox(height: 30),
+            const Expanded(
               child: GraphView(),
             ),
           ],
