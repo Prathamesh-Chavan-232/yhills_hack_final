@@ -7,6 +7,13 @@ List<String> cities = [
   "Hyderabad",
 ];
 
+
+List<String> crimeImg = [
+  "assets/gun.jpg",
+  "assets/murder.jpg",
+  "assets/Handcuffs.jpg"
+];
+
 class GraphData
 {
   double X;
@@ -22,3 +29,8 @@ class CityData {
   CityData({this.cityName, this.crimeName,this.graphData});
 }
 
+class Data {
+  final String name;
+  final int value;
+  Data({required this.name, required this.value});
+}

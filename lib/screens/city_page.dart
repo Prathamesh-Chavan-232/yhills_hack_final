@@ -1,6 +1,7 @@
 import 'package:crime_stats_app/screens/city_list.dart';
 import 'package:crime_stats_app/utilities/graph_view.dart';
 import 'package:crime_stats_app/utilities/classes.dart';
+import 'package:crime_stats_app/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
 CityData cityData = CityData(cityName: cities[0]);
@@ -23,6 +24,12 @@ class _CityPageState extends State<CityPage> {
               // Appbar - Menu icon, City name, Alerts icon
               _buildCustomAppbar(context),
 
+              Text(
+                "     Statistics by types of Crimes",
+                style: TextStyle(
+                    color: kTealClr, fontSize: 18,fontFamily: 'Poppins_semi_bold'),
+              ),
+
               // Horizontal list view for types of crime, TODO: Replace containers with images / other UI elements
               Expanded(
                 child: Padding(
@@ -37,11 +44,13 @@ class _CityPageState extends State<CityPage> {
               ),
 
               // Text + little bit spacing
-              const Padding(
-                padding: EdgeInsets.only(left: 15, right: 15, top: 15),
-                child: Text("   Graphs",
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+              Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
+                child: Text("   Graphical view",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: kTealClr!)),
               ),
               const SizedBox(height: 10),
 
@@ -111,8 +120,9 @@ Widget _buildContainer(BuildContext context, int i) {
         width: 260,
         decoration: BoxDecoration(
           color: Colors.grey[350],
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(20),
         ),
+        child: Image.asset(crimeImg[i],fit: BoxFit.fitHeight),
       ),
     ),
   );

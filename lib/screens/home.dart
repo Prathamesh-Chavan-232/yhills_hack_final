@@ -11,9 +11,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
         body: const Center(
-      child: Text("Home Page",style: TextStyle(color: Colors.grey),),
+      child: Text("Home Page",style: TextStyle(color: Colors.black),),
     ),
       floatingActionButton: Align(
     child: SizedBox(

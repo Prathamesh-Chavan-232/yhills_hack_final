@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'classes.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 class GraphView extends StatefulWidget {
   const GraphView({Key? key}) : super(key: key);
@@ -41,26 +43,22 @@ class _GraphViewState extends State<GraphView> {
   }
 
 
-
-
-
   Widget _buildPieChart()
   {
     return SfCircularChart(
       title: ChartTitle(
-          text: 'Continent wise GDP - 2021 \n (in billions of USD)'),
+          text: 'Sample pie chart \n (unit - __ )'),
       series: <CircularSeries>[
         PieSeries<Data, String>(
             dataSource: _chartData,
             xValueMapper: (data, context) => data.name,
             yValueMapper: (data, context) => data.value,
-            dataLabelSettings: DataLabelSettings(isVisible: true))
+            dataLabelSettings: const DataLabelSettings(isVisible: true))
       ],
     );
   }
 
 }
-
 
 
 
@@ -77,8 +75,3 @@ List<Data> getChartData() {
 }
 
 
-class Data {
-  final String name;
-  final int value;
-  Data({required this.name, required this.value});
-}
