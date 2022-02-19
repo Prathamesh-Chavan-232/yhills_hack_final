@@ -41,7 +41,7 @@ class _GraphViewState extends State<GraphView> {
         height: 270,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12), color: Colors.white),
-        child: chkGraph(i),
+        child: _buildPieChart()
       ),
     );
   }
@@ -75,32 +75,8 @@ class _GraphViewState extends State<GraphView> {
 
             xValueMapper: (ExpenseData exp, _) => exp.expenseCategory,
             yValueMapper: (ExpenseData exp, _) => exp.father,
-            name: 'Father',
+            name: 'label1',
             markerSettings: const MarkerSettings(
-              isVisible: true,
-            )),
-        StackedArea100Series<ExpenseData, String>(
-            dataSource: _chartData1,
-            xValueMapper: (ExpenseData exp, _) => exp.expenseCategory,
-            yValueMapper: (ExpenseData exp, _) => exp.mother,
-            name: 'Mother',
-            markerSettings: MarkerSettings(
-              isVisible: true,
-            )),
-        StackedArea100Series<ExpenseData, String>(
-            dataSource: _chartData1,
-            xValueMapper: (ExpenseData exp, _) => exp.expenseCategory,
-            yValueMapper: (ExpenseData exp, _) => exp.son,
-            name: 'Son',
-            markerSettings: MarkerSettings(
-              isVisible: true,
-            )),
-        StackedArea100Series<ExpenseData, String>(
-            dataSource: _chartData1,
-            xValueMapper: (ExpenseData exp, _) => exp.expenseCategory,
-            yValueMapper: (ExpenseData exp, _) => exp.daughter,
-            name: 'Daughter',
-            markerSettings: MarkerSettings(
               isVisible: true,
             )),
       ],

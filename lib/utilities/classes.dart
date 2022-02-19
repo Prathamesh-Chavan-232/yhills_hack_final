@@ -34,12 +34,12 @@ class Data {
 
 List<ExpenseData> getChartData1() {
   final List<ExpenseData> chartData = [
-    ExpenseData('Food', 55, 40, 45, 48),
-    ExpenseData('Transport', 33, 45, 54, 28),
-    ExpenseData('Medical', 43, 23, 20, 34),
-    ExpenseData('Clothes', 32, 54, 23, 54),
-    ExpenseData('Books', 56, 18, 43, 55),
-    ExpenseData('Others', 23, 54, 33, 56),
+    ExpenseData('label1', 55, 40, 45, 48),
+    ExpenseData('label2', 33, 45, 54, 28),
+    ExpenseData('label3', 43, 23, 20, 34),
+    ExpenseData('label4', 32, 54, 23, 54),
+    ExpenseData('label5', 56, 18, 43, 55),
+    ExpenseData('label6', 23, 54, 33, 56),
   ];
   return chartData;
 }

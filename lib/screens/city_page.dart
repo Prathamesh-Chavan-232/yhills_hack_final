@@ -15,64 +15,56 @@ class CityPage extends StatefulWidget {
 
 class _CityPageState extends State<CityPage> {
 
-
   CityData cityData = CityData(cityName: cities[0]);
-  @override
-  void initState() {
-    cityData = CityData(cityName: cities[0]);
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: kBgClr,
-        body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Appbar - Menu icon, City name, Alerts icon
-              _buildCustomAppbar(context),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Appbar - Menu icon, City name, Alerts icon
+            _buildCustomAppbar(context),
 
-              Text(
-                "     Statistics by types of Crimes",
-                style: TextStyle(
-                    color: kTealClr, fontSize: 18,fontFamily: 'Poppins_semi_bold'),
-              ),
+            Text(
+              "     Statistics by types of Crimes",
+              style: TextStyle(
+                  color: kTealClr, fontSize: 18,fontFamily: 'Poppins_semi_bold'),
+            ),
 
-              // Horizontal list view for types of crime, TODO: Replace containers with images / other UI elements
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 12, top: 15),
-                  child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 3,
-                      separatorBuilder: (context, i) =>
-                          const SizedBox(width: 10),
-                      itemBuilder: (context, i) => _buildContainer(context, i)),
-                ),
+            // Horizontal list view for types of crime, TODO: Replace containers with images / other UI elements
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 12, top: 15),
+                child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 3,
+                    separatorBuilder: (context, i) =>
+                        const SizedBox(width: 10),
+                    itemBuilder: (context, i) => _buildContainer(context, i)),
               ),
+            ),
 
-              // Text + little bit spacing
-              Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
-                child: Text("   Graphical view",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: kTealClr!)),
-              ),
-              const SizedBox(height: 10),
+            // Text + little bit spacing
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
+              child: Text("   Graphical view",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: kTealClr!)),
+            ),
+            const SizedBox(height: 10),
 
-              // Rendering graphs from graph view widget
-              const Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(left: 15, right: 15, top: 15),
-                  child: GraphView(),
-                ),
+            // Rendering graphs from graph view widget
+            const Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(left: 15, right: 15, top: 15),
+                child: GraphView(),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         floatingActionButton: Align(
           child: SizedBox(

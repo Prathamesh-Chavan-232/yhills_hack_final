@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:crime_stats_app/screens/home.dart';
+import 'package:crime_stats_app/screens/homepage.dart';
 import 'package:crime_stats_app/screens/load.dart';
 import 'package:crime_stats_app/utilities/map_class.dart';
 import 'package:crime_stats_app/screens/by_crime_page.dart';
@@ -18,14 +19,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-
     return MaterialApp(
       title: "crimex",
       initialRoute: '/home',
       routes: {
         '/home': (context) => const HomePage(),
+        '/home_page': (context) => const homepage(),
         '/by_crime': (context) => const ByCrime(),
         '/city_list': (context) => CityList(),
         '/city_page': (context) => const CityPage(),
